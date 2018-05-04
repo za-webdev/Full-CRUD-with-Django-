@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Users</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+			input, select {
+			    width: 60%;
+			    padding: 12px 20px;
+			    margin: 8px 0;
+			    display: inline-block;
+			    border: 1px solid #ccc;
+			    border-radius: 4px;
+			    box-sizing: border-box;
+			}
+
+			input[type=submit]:hover {
+			    background-color: #45a049;
+			}
+
+			div {
+			    border-radius: 5px;
+			    background-color: #f2f2f2;
+			    padding: 20px;
+			}
+	</style>
+
+</head>
+<body>
+	<h1>ADD A NEW USER</h1>
+	<form action="/create" method="post">
+		{%csrf_token%}
+
+		{% if messages %}
+				<ul class="messages">
+				    {% for message in messages %}
+				    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				    {% endfor %}
+				</ul>
+		{% endif %}
+
+		<label>First Name:</label><br>
+		<input type="text" name="first_name"><br>
+		<label>Last Name:</label><br>
+		<input type="text" name="last_name"><br>
+		<label>Email:</label><br>
+		<input type="email" name="email"><br>
+		<input type="submit" name="Create">
+	</form>
+	<a href="/"> Go back</a>
+
+</body>
+</html>
